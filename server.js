@@ -1,6 +1,5 @@
 const express = require("express")
 const cors = require("cors")
-
 const app = express()
 app.use(express.json())
 app.use(cors())
@@ -60,8 +59,9 @@ app.get("/api/getJuly", (req, res) => {
 app.post("/api/postIncomeAndTax", (req, res) => {
     console.log("Post endpoint hit")
     console.log(req.body)
-    console.log(req.body.incandtax)
-    otherDatabase.push(req.body.incandtax)
+    console.log(req.body.income)
+    otherDatabase.push(req.body.income)
+    otherDatabase.push(req.body.tax)
     res.status(200).send(otherDatabase[otherDatabase.length - 1])
 })
 

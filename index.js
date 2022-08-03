@@ -1,4 +1,4 @@
-const baseURL = `http://localhost:9876/apiDatabase`
+const baseURL = `http://localhost:9876`
 
 const getMay = document.querySelector("#may-budget")
 const getJune = document.querySelector("#june-budget")
@@ -37,11 +37,16 @@ const postIncomeAndTax = () => {
             otherDatabase.push(res.data)
         })
 }
-// const postIncomeAndTax = () => {
+
+
+
+
+
+
+// const postNewItem = () => {
 //     const otherDatabaseObj = {
 //         income: incomeInput.value,
 //         tax: taxInput.value
-
 //     }
 //     axios.post(`${baseURL}/api/postIncomeAndTax`, otherDatabaseObj) 
 //         .then((res) => {
@@ -49,44 +54,28 @@ const postIncomeAndTax = () => {
 //             otherDatabase.push(res.data)
 //         })
 // }
-
-
-
-
-
-const postNewItem = () => {
-    const otherDatabaseObj = {
-        income: incomeInput.value,
-        tax: taxInput.value
-    }
-    axios.post(`${baseURL}/api/postIncomeAndTax`, otherDatabaseObj) 
-        .then((res) => {
-            console.log(res.data)
-            // otherDatabase.push(res.data)
-        })
-}
-const postNewItemCost = () => {
-    const otherDatabaseObj = {
-        income: incomeInput.value,
-        tax: taxInput.value
-    }
-    axios.post(`${baseURL}/api/postNewItemCost`, otherDatabaseObj) 
-        .then((res) => {
-            console.log(res.data)
-            // otherDatabase.push(res.data)
-        })
-}
-const postNewBudget = () => {
-    const otherDatabaseObj = {
-        income: incomeInput.value,
-        tax: taxInput.value
-    }
-    axios.post(`${baseURL}/api/postIncomeAndTax`, otherDatabaseObj) 
-        .then((res) => {
-            console.log(res.data)
-            // otherDatabase.push(res.data)
-        })
-}
+// const postNewItemCost = () => {
+//     const otherDatabaseObj = {
+//         income: incomeInput.value,
+//         tax: taxInput.value
+//     }
+//     axios.post(`${baseURL}/api/postNewItemCost`, otherDatabaseObj) 
+//         .then((res) => {
+//             console.log(res.data)
+//             otherDatabase.push(res.data)
+//         })
+// }
+// const postNewBudget = () => {
+//     const otherDatabaseObj = {
+//         income: incomeInput.value,
+//         tax: taxInput.value
+//     }
+//     axios.post(`${baseURL}/api/postIncomeAndTax`, otherDatabaseObj) 
+//         .then((res) => {
+//             console.log(res.data)
+//             otherDatabase.push(res.data)
+//         })
+// }
 
 getMay.addEventListener("click", getMayBudget)
 getJune.addEventListener("click", getJuneBudget)
