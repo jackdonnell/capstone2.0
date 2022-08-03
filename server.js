@@ -65,27 +65,27 @@ app.post("/api/postIncomeAndTax", (req, res) => {
     res.status(200).send(otherDatabase[otherDatabase.length - 1])
 })
 
-app.post("/api/postNewItem", (req, res) => {
-    console.log("Post endpoint hit")
-    console.log(req.body)
-    console.log(req.body.incandtax)
-    otherDatabase.push(req.body.incandtax)
-    res.status(200).send(otherDatabase[otherDatabase.length - 1])
-})
-app.post("/api/postNewItemCost", (req, res) => {
-    console.log("Post endpoint hit")
-    console.log(req.body)
-    console.log(req.body.incandtax)
-    otherDatabase.push(req.body.incandtax)
-    res.status(200).send(otherDatabase[otherDatabase.length - 1])
-})
-app.post("/api/postNewBudget", (req, res) => {
-    console.log("Post endpoint hit")
-    console.log(req.body)
-    console.log(req.body.incandtax)
-    otherDatabase.push(req.body.incandtax)
-    res.status(200).send(otherDatabase[otherDatabase.length - 1])
-})
+// app.post("/api/postNewItem", (req, res) => {
+//     console.log("Post endpoint hit")
+//     console.log(req.body)
+//     console.log(req.body.incandtax)
+//     otherDatabase.push(req.body.incandtax)
+//     res.status(200).send(otherDatabase[otherDatabase.length - 1])
+// })
+// app.post("/api/postNewItemCost", (req, res) => {
+//     console.log("Post endpoint hit")
+//     console.log(req.body)
+//     console.log(req.body.incandtax)
+//     otherDatabase.push(req.body.incandtax)
+//     res.status(200).send(otherDatabase[otherDatabase.length - 1])
+// })
+// app.post("/api/postNewBudget", (req, res) => {
+//     console.log("Post endpoint hit")
+//     console.log(req.body)
+//     console.log(req.body.incandtax)
+//     otherDatabase.push(req.body.incandtax)
+//     res.status(200).send(otherDatabase[otherDatabase.length - 1])
+// })
 
 
 
