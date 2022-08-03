@@ -3,10 +3,10 @@ const baseURL = `http://localhost:9876`
 const getMay = document.querySelector("#may-budget")
 const getJune = document.querySelector("#june-budget")
 const getJuly = document.querySelector("#july-budget")
+const nameInput = document.querySelector("#name")
 const incomeInput = document.querySelector("#income")
 const taxInput = document.querySelector("#tax")
-const incomeAndTaxSubmit = document.querySelector("#income-tax-submit")
-
+const nameAndIncomeAndTaxSubmit = document.querySelector("#income-tax-submit")
 const getMayBudget = () => {
     axios.get(`${baseURL}/api/getMay`)
         .then((res) => {
@@ -25,16 +25,17 @@ const getJulyBudget = () => {
             console.log(res.data)
         })
 }
-const postIncomeAndTax = () => {
-    const otherDatabaseObj = {
+const postNameAndIncomeAndTax = () => {
+    const budgetDatabaseObj = {
+        Name: nameInput.value,
         income: incomeInput.value,
         tax: taxInput.value
 
     }
-    axios.post(`${baseURL}/api/postIncomeAndTax`, otherDatabaseObj) 
+    axios.post(`${baseURL}/api/postNameAndIncomeAndTax`, budgetDatabaseObj) 
         .then((res) => {
             console.log(res.data)
-            otherDatabase.push(res.data)
+            budgetDatabase.push(res.data)
         })
 }
 
@@ -81,4 +82,4 @@ getMay.addEventListener("click", getMayBudget)
 getJune.addEventListener("click", getJuneBudget)
 getJuly.addEventListener("click", getJulyBudget)
 
-incomeAndTaxSubmit.addEventListener("click", postIncomeAndTax)
+nameAndIncomeAndTaxSubmit.addEventListener("click", postNameAndIncomeAndTax)

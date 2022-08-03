@@ -1,6 +1,8 @@
 let budgetDatabase = [{
-    // Name: 'May',
+    Name: 'May',
     Income: 4800,
+    Tax: null,
+    items: {
     Rent: 1600,
     Car: 300,
     Insurance: 200,
@@ -9,11 +11,13 @@ let budgetDatabase = [{
     Shopping: 520,
     Travel: 190,
     Movies: 50,
-    Investment: 800
+    Investment: 800}
 },
 {
-    // Name: 'June',
+    Name: 'June',
     Income: 4800,
+    Tax: null,
+    items: {
     Rent: 1600,
     Car: 300,
     Insurance: 200,
@@ -21,11 +25,13 @@ let budgetDatabase = [{
     Groceries: 280,
     Shopping: 370,
     Travel: 430,
-    Investment: 800
+    Investment: 800}
 },
 {
-    // Name: 'July',
+    Name: 'July',
     Income: 4800,
+    Tax: null,
+    items: {
     Rent: 1600,
     Car: 300,
     Insurance: 200,
@@ -33,7 +39,7 @@ let budgetDatabase = [{
     Groceries: 660,
     Shopping: 90,
     Travel: 1200,
-    Investment: 800
+    Investment: 800}
 }]
 
 
@@ -42,17 +48,26 @@ let budgetDatabase = [{
     //     sum += budgetDatabase[i]
     // }
     let sum = 0
+
 budgetDatabase.forEach(budget => {
-    for (let i in budget) {
-        // console.log(budget[i])
-        sum += budget[i]
+    for (let i in budgetDatabase.items) {
+        console.log(budget[i])
+        sum += budgetDatabase.items[i]
     }
 })
 
 // for (let i = 0; i < budgetDatabase.length; i++) {
-//     for (let j in budgetDatabase[i]) {
-//         sum += budgetDatabase[i]
-//     }
-// }
+    //     for (let j in budgetDatabase[i]) {
+        //         sum += budgetDatabase[i]
+        //     }
+        // }
+
+
+        // budgetDatabase.forEach(budget => {
+        //     budgetDatabase.Income * (1 + budgetDatabase.tax)
+        // })
+        
+        let newBudgetMonthlyInc = (budgetDatabase[3].items.Income * (1 + budgetDatabase[3].items.Tax)) / 12
+        console.log(newBudgetMonthlyInc)
 
 console.log(sum)
