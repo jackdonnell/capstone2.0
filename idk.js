@@ -42,33 +42,72 @@ let budgetDatabase = [{
     Investment: 800}
 }]
 
-const sumBudget = (index) => {
-    let sum = 0
-    let budgObj = {...budgetDatabase[index].items}
-    // console.log(mayObj)
-    // mayObj.forEach(budget => {
+
+let sum = 0
+let mayObj = {...budgetDatabase[0].items}
+// console.log(mayObj)
     for (const i in mayObj) {
         // console.log(budget.items[i])
-        sum += budgObj[i]
-        return sum
-    // }
+        sum += mayObj[i]
+        // }
     }
-}
+    console.log(sum)
 
-
-const newBudgetMonthlyInc = (index) => {
-    let inc = 0
+ const sums = (index) => {  
+       let sum = 0
     let budgObj = {...budgetDatabase[index].items}
-    // console.log(mayObj)
-    // mayObj.forEach(budget => {
-    for (const i in mayObj) {
-        // console.log(budget.items[i])
-        sum += budgObj[i]
+    console.log(budgObj)
+        for (const i in budgObj) {
+            // console.log(budget.items[i])
+            sum += budgObj[i]
+            // }
+        }
         return sum
-    // }
     }
-}
-        let newBudgetMonthlyIn = (budgetDatabase[3].items.Income * (1 + budgetDatabase[3].items.Tax)) / 12
-        console.log(newBudgetMonthlyInc)
+    
+        console.log(sums(0))
+// const sumBudget = (index) => {
+//     let sum = 0
+//     let budgObj = {...budgetDatabase[index].items}
+//     // console.log(mayObj)
+//     // mayObj.forEach(budget => {
+//     for (const i in mayObj) {
+//         // console.log(budget.items[i])
+//         sum += budgObj[i]
+//         return sum
+//     // }
+//     }
+// }
+// console.log(sumBudget(3))
 
-console.log(sum)
+// let taxAmount = budgetDatabase[3].Income * budgetDatabase[3].Tax
+// console.log(taxAmount)
+
+// const newBudgetMonthlyInc = (index) => {
+//     let inc = 0
+//     let budgObj = {...budgetDatabase[index].items}
+
+//     // console.log(mayObj)
+//     // mayObj.forEach(budget => {
+//     for (const i in mayObj) {
+//         // console.log(budget.items[i])
+//         sum += budgObj[i]
+//         return sum
+//     // }
+//     }
+// }
+//         let newBudgetMonthlyIn = (budgetDatabase[3].items.Income * (1 + budgetDatabase[3].items.Tax)) / 12
+//         console.log(newBudgetMonthlyInc)
+
+
+    //THIS CODE WORKS
+    // let sum = 0
+    // let mayObj = {...budgetDatabase[0].items}
+    // // console.log(mayObj)
+    // // mayObj.forEach(budget => {
+    //     for (const i in mayObj) {
+    //         // console.log(budget.items[i])
+    //         sum += mayObj[i]
+    //         // }
+    //     }
+    //     console.log(sum)

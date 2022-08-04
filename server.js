@@ -85,19 +85,17 @@ app.post("/api/newExpense", (req, res) => {
     console.log(budgetDatabase[budgetDatabase.length - 1].items)
 })
 
-const sumBudget = (index) => {
+const sums = (index) => {  
     let sum = 0
-    let budgObj = {...budgetDatabase[index].items}
-    // console.log(mayObj)
-    // mayObj.forEach(budget => {
-    for (const i in mayObj) {
-        // console.log(budget.items[i])
-        sum += budgObj[i]
-        return sum
-    // }
-    }
+ let budgObj = {...budgetDatabase[index].items}
+//  console.log(budgObj)
+     for (const i in budgObj) {
+         sum += budgObj[i]
+     }
+ return sum
 }
-
+ 
+console.log(sumBudget)(3)
 // function createBudgetTable(budget) {
 //     const budgetTable = document.createElement('div')
 //     budgetTable.classList.add('budget-table')
@@ -139,32 +137,3 @@ const sumBudget = (index) => {
 // }
 
 app.listen(9876, () => console.log("Docked on port 9876"))
-
-
-
-
-
-// app.post("/api/postNewItemAndCost", (req, res) => {
-//     console.log("Post endpoint hit")
-//     console.log(req.body)
-//     console.log(req.body.itemandcost)
-//     otherDatabase.push(req.body.itemandcost)
-//     res.status(200).send(otherDatabase[otherDatabase.length - 1])
-// })
-
-
-
-// app.post("/api/postNewItemCost", (req, res) => {
-//     console.log("Post endpoint hit")
-//     console.log(req.body)
-//     console.log(req.body.incandtax)
-//     otherDatabase.push(req.body.incandtax)
-//     res.status(200).send(otherDatabase[otherDatabase.length - 1])
-// })
-// app.post("/api/postNewBudget", (req, res) => {
-//     console.log("Post endpoint hit")
-//     console.log(req.body)
-//     console.log(req.body.incandtax)
-//     otherDatabase.push(req.body.incandtax)
-//     res.status(200).send(otherDatabase[otherDatabase.length - 1])
-// })
