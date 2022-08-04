@@ -3,6 +3,10 @@ const baseURL = `http://localhost:9876`
 const getMay = document.querySelector("#may-budget")
 const getJune = document.querySelector("#june-budget")
 const getJuly = document.querySelector("#july-budget")
+const getNextBudget = document.querySelector("#get-next-budget")
+const testButton = document.querySelector("#test-button")
+
+
 
 const expenseAndCostSubmit = document.querySelector("#income-tax-submit")
 const nameAndIncomeAndTaxSubmit = document.querySelector("#name-income-tax-submit")
@@ -14,23 +18,43 @@ const getMayBudget = () => {
     axios.get(`${baseURL}/api/getMay`)
         .then((res) => {
             console.log(res.data)
+            while (summaryContainer.firstChild) {
+                summaryContainer.removeChild(summaryContainer.firstChild);
+            }
+            summary(res.data)
         })
-}
-const getJuneBudget = () => {
-    axios.get(`${baseURL}/api/getJune`)
+    }
+    const getJuneBudget = () => {
+        axios.get(`${baseURL}/api/getJune`)
         .then((res) => {
             console.log(res.data)
+            while (summaryContainer.firstChild) {
+                summaryContainer.removeChild(summaryContainer.firstChild);
+              }
+            summary(res.data)
         })
-}
-const getJulyBudget = () => {
-    axios.get(`${baseURL}/api/getJuly`)
+    }
+    const getJulyBudget = () => {
+        axios.get(`${baseURL}/api/getJuly`)
         .then((res) => {
             console.log(res.data)
+            while (summaryContainer.firstChild) {
+                summaryContainer.removeChild(summaryContainer.firstChild);
+              }
+            summary(res.data)
         })
-}
-const postNameAndIncomeAndTax = (e) => {
-const nameInput = document.querySelector("#name")
-const incomeInput = document.querySelector("#income")
+    }
+
+    const sumTotal = (id) => {
+        axios.get(`${baseURL}/api/getMonthlyInc/${id}`)
+            .then((res) => {
+                console.log(res.data)
+            })
+    }
+
+    const postNameAndIncomeAndTax = (e) => {
+        const nameInput = document.querySelector("#name")
+    const incomeInput = document.querySelector("#income")
 const taxInput = document.querySelector("#tax")
     const budgetDatabaseObj = {
         Name: nameInput.value,
@@ -57,15 +81,25 @@ const newExpense = () => {
     })
 }
 
-let summaryArr = [monthlyInc, sum, incomeRemaining]
+// let summaryArr = [monthlyInc, sum, incomeRemaining]
 
-const summary = (arr) => {
+const summary = (obj) => {
+    let inc = obj.Income
+    let tax = obj.Tax
+    let monthlyInc = inc - (inc * tax)
+
+    let sum = 0
+    let budgObj = {...obj.items}
+    // console.log(budgObj)
+    for (const i in budgObj) {
+        sum += budgObj[i]
+    }
+    let incomeRemaining = monthlyInc - sum
+
     const summaryDiv = document.createElement('div')
     summaryDiv.classList.add('summary')
 
-    summaryDiv.innerHTML = `<p>Your monthly income after tax is ${arr[0]}</p><p>You've spent ${arr[1]}</p><p>You have ${arr[2]} remaining</p></div>`
-
-
+    summaryDiv.innerHTML = `<p>Your monthly income after tax is ${monthlyInc}</p><p>You've spent ${sum}</p><p>You have ${incomeRemaining} remaining</p></div>`
     summaryContainer.appendChild(summaryDiv)
 }
 
@@ -80,17 +114,19 @@ const summary = (arr) => {
 
 // getAllMovies()
 
-const runEverything = () => {
-summary(summaryArr)
-postNameAndIncomeAndTax(2)
+// const runEverything = () => {
+// summary(summaryArr)
+// postNameAndIncomeAndTax(2)
 
-}
+// }
 
-nameAndIncomeAndTaxSubmit.addEventListener("click", runEverything)
+// nameAndIncomeAndTaxSubmit.addEventListener("click", runEverything)
 expenseAndCostSubmit.addEventListener("click", newExpense)
 
-
-
+const incomeTotal = () => {
+    sumTotal(1)
+}
+testButton.addEventListener("click", incomeTotal)
 getMay.addEventListener("click", getMayBudget)
 getJune.addEventListener("click", getJuneBudget)
 getJuly.addEventListener("click", getJulyBudget)

@@ -82,8 +82,9 @@ app.post("/api/newExpense", (req, res) => {
     let {expenseName, cost} = req.body
     budgetDatabase[budgetDatabase.length - 1].items[`${expenseName}`] = +cost
     console.log(budgetDatabase[budgetDatabase.length - 1].items)
-    
+
 })
+
 
 let monthlyInc = 0
 const findMonthlyIncAfterTax = (index) => { 
@@ -93,7 +94,16 @@ const findMonthlyIncAfterTax = (index) => {
     return monthlyInc
 }
 
-console.log(findMonthlyIncAfterTax(1))
+app.get(`/api/getMonthlyInc/:id`, (req, res) => {
+    console.log("Endpoint hit")
+    console.log(req.params.id)
+    let index = req.params.id
+    let result = findMonthlyIncAfterTax(index)
+    let resultObj = {total: result}
+    res.status(200).send(resultObj)
+})
+
+// console.log(findMonthlyIncAfterTax(1))
 
 let sum = 0
 const sumBudget = (index) => { 
@@ -104,12 +114,16 @@ const sumBudget = (index) => {
     }
     return sum
 }
+app.get("/api/getsum", (req, res) => {
+    console.log("Endpoint hit")
+    res.status(200).send(findMonthlyIncAfterTax(index))
+})
 
-console.log(sumBudget(1))
+// console.log(sumBudget(1))
 
-let incomeRemaining = monthlyInc - sum
+// let incomeRemaining = monthlyInc - sum
 
-console.log(incomeRemaining)
+// console.log(incomeRemaining)
 
 
 app.listen(9876, () => console.log("Docked on port 9876"))

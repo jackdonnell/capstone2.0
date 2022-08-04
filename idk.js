@@ -61,7 +61,14 @@ const sumBudget = (index) => {
     }
     return sum
 }
-
+app.get("/api/getSum/:id", (req, res) => {
+    console.log("Endpoint hit")
+    console.log(req.params.id)
+    let x = req.params.id
+    let result = sumBudget(index)
+    let resultObj = {totalCost: result}
+    res.status(200).send(resultObj)
+})
 console.log(sumBudget(1))
 
 let incomeRemaining = monthlyInc - sum
