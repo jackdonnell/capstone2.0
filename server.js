@@ -61,18 +61,35 @@ app.get("/api/getJuly", (req, res) => {
     res.status(200).send(budgetDatabase[2])
 })
 
-app.post("/api/postIncomeAndTax", (req, res) => {
+app.post("/api/postNameAndIncomeAndTax", (req, res) => {
     console.log("Post endpoint hit")
-    // budgetDatabase.push(budgetDatabase[budgetDatabase - 1].req.body.Name)
-    // budgetDatabase.push(budgetDatabase[3].req.body.income)
-    // budgetDatabase.push(budgetDatabase[3].req.body.tax)
-    budgetDatabase.push(budgetDatabase) //maybe?
-    budgetDatabase.push(req.body.Name)
-    budgetDatabase.push(req.body.income)
-    budgetDatabase.push(req.body.tax)
-    console.log(budgetDatabase)
+    let newBudget = {
+        Name: req.body.Name,
+        Income: +req.body.Income,
+        Tax: +req.body.Tax,
+        items: {}
+
+
+    }
+    budgetDatabase.push(newBudget)
+    console.log(budgetDatabase[budgetDatabase.length - 1])
     res.status(200).send(budgetDatabase[budgetDatabase.length - 1])
 })
+
+
+app.post("/api/newExpense", (req, res) => {
+    console.log("Post endpoint hit")
+    console.log(budgetDatabase[budgetDatabase.length - 1].items)
+    let {expenseName, cost} = req.body
+    budgetDatabase[budgetDatabase.length - 1].items[`${expenseName}`] = +cost
+    console.log(budgetDatabase[budgetDatabase.length - 1].items)
+})
+
+    app.listen(9876, () => console.log("Docked on port 9876"))
+
+
+
+
 
 // app.post("/api/postNewItemAndCost", (req, res) => {
 //     console.log("Post endpoint hit")
@@ -98,7 +115,3 @@ app.post("/api/postIncomeAndTax", (req, res) => {
 //     otherDatabase.push(req.body.incandtax)
 //     res.status(200).send(otherDatabase[otherDatabase.length - 1])
 // })
-
-
-
-app.listen(9876, () => console.log("Docked on port 9876"))

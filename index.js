@@ -1,12 +1,13 @@
+
+
 const baseURL = `http://localhost:9876`
 
 const getMay = document.querySelector("#may-budget")
 const getJune = document.querySelector("#june-budget")
 const getJuly = document.querySelector("#july-budget")
-const nameInput = document.querySelector("#name")
-const incomeInput = document.querySelector("#income")
-const taxInput = document.querySelector("#tax")
-const nameAndIncomeAndTaxSubmit = document.querySelector("#income-tax-submit")
+
+const expenseAndCostSubmit = document.querySelector("#income-tax-submit")
+const nameAndIncomeAndTaxSubmit = document.querySelector("#name-income-tax-submit")
 const getMayBudget = () => {
     axios.get(`${baseURL}/api/getMay`)
         .then((res) => {
@@ -25,19 +26,42 @@ const getJulyBudget = () => {
             console.log(res.data)
         })
 }
-const postNameAndIncomeAndTax = () => {
+const postNameAndIncomeAndTax = (e) => {
+const nameInput = document.querySelector("#name")
+const incomeInput = document.querySelector("#income")
+const taxInput = document.querySelector("#tax")
     const budgetDatabaseObj = {
         Name: nameInput.value,
-        income: incomeInput.value,
-        tax: taxInput.value
+        Income: incomeInput.value,
+        Tax: taxInput.value
 
     }
     axios.post(`${baseURL}/api/postNameAndIncomeAndTax`, budgetDatabaseObj) 
         .then((res) => {
             console.log(res.data)
-            budgetDatabase.push(res.data)
         })
 }
+
+const newExpense = () => {
+    const expense = document.querySelector("#expense")
+    const cost = document.querySelector("#cost")
+    let expenseObj = {
+        expenseName: expense.value,
+        cost: cost.value
+    }
+    console.log(expenseObj)
+    axios.post(`${baseURL}/api/newExpense`, expenseObj)
+    .then((res) => {
+        console.log(res.data)
+    })
+}
+
+getMay.addEventListener("click", getMayBudget)
+getJune.addEventListener("click", getJuneBudget)
+getJuly.addEventListener("click", getJulyBudget)
+
+nameAndIncomeAndTaxSubmit.addEventListener("click", postNameAndIncomeAndTax)
+expenseAndCostSubmit.addEventListener("click", newExpense)
 
 
 
@@ -77,9 +101,3 @@ const postNameAndIncomeAndTax = () => {
 //             otherDatabase.push(res.data)
 //         })
 // }
-
-getMay.addEventListener("click", getMayBudget)
-getJune.addEventListener("click", getJuneBudget)
-getJuly.addEventListener("click", getJulyBudget)
-
-nameAndIncomeAndTaxSubmit.addEventListener("click", postNameAndIncomeAndTax)

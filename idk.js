@@ -48,13 +48,15 @@ let budgetDatabase = [{
     //     sum += budgetDatabase[i]
     // }
     let sum = 0
+    let mayObj = {...budgetDatabase[0].items}
+    // console.log(mayObj)
+    // mayObj.forEach(budget => {
+    for (const i in mayObj) {
+        // console.log(budget.items[i])
+        sum += mayObj[i]
+    // }
+}
 
-budgetDatabase.forEach(budget => {
-    for (let i in budgetDatabase.items) {
-        console.log(budget[i])
-        sum += budgetDatabase.items[i]
-    }
-})
 
 // for (let i = 0; i < budgetDatabase.length; i++) {
     //     for (let j in budgetDatabase[i]) {
@@ -67,7 +69,7 @@ budgetDatabase.forEach(budget => {
         //     budgetDatabase.Income * (1 + budgetDatabase.tax)
         // })
         
-        let newBudgetMonthlyInc = (budgetDatabase[3].items.Income * (1 + budgetDatabase[3].items.Tax)) / 12
-        console.log(newBudgetMonthlyInc)
+        // let newBudgetMonthlyInc = (budgetDatabase[3].items.Income * (1 + budgetDatabase[3].items.Tax)) / 12
+        // console.log(newBudgetMonthlyInc)
 
 console.log(sum)
