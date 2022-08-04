@@ -58,17 +58,15 @@ const newExpense = () => {
     })
 }
 
-let summaryArr = [monthlyInc, sum, incomeRemaining]
+// const summary = () => {
+//     const summaryDiv = document.createElement('div')
+//     summaryDiv.classList.add('summary')
 
-function summary(arr) {
-    const summaryDiv = document.createElement('div')
-    summaryDiv.classList.add('summary')
-
-    summaryDiv.innerHTML = `<p>Your monthly income after tax is ${summaryArr[0]}</p><p>You've spent ${summaryArr[1]}</p><p>You have ${summaryArr[2]} remaining</p></div>`
+//     summaryDiv.innerHTML = `<p>Your monthly income after tax is ${monthlyInc}</p><p>You've spent ${sum}</p><p>You have ${incomeRemaining} remaining</p></div>`
 
 
-    summaryContainer.appendChild(summaryDiv)
-}
+//     summaryContainer.appendChild(summaryDiv)
+// }
 
 // function displayMovies(arr) {
 //     moviesContainer.innerHTML = ``
@@ -80,10 +78,11 @@ function summary(arr) {
 // form.addEventListener('submit', submitHandler)
 
 // getAllMovies()
+nameAndIncomeAndTaxSubmit.addEventListener("click", postNameAndIncomeAndTax)
+expenseAndCostSubmit.addEventListener("click", newExpense)
+
+
 
 getMay.addEventListener("click", getMayBudget)
 getJune.addEventListener("click", getJuneBudget)
 getJuly.addEventListener("click", getJulyBudget)
-
-nameAndIncomeAndTaxSubmit.addEventListener("click", postNameAndIncomeAndTax)
-expenseAndCostSubmit.addEventListener("click", newExpense)

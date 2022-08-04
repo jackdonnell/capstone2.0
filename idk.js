@@ -1,7 +1,7 @@
 let budgetDatabase = [{
     Name: 'May',
-    Income: 4800,
-    Tax: null,
+    Income: 5000,
+    Tax: .15,
     items: {
     Rent: 1600,
     Car: 300,
@@ -15,8 +15,8 @@ let budgetDatabase = [{
 },
 {
     Name: 'June',
-    Income: 4800,
-    Tax: null,
+    Income: 5000,
+    Tax: .15,
     items: {
     Rent: 1600,
     Car: 300,
@@ -29,8 +29,8 @@ let budgetDatabase = [{
 },
 {
     Name: 'July',
-    Income: 4800,
-    Tax: null,
+    Income: 5000,
+    Tax: .15,
     items: {
     Rent: 1600,
     Car: 300,
@@ -69,8 +69,17 @@ let incomeRemaining = monthlyInc - sum
 console.log(incomeRemaining)
 
 
+const summary = () => {
+    const summaryDiv = document.createElement('div')
+    summaryDiv.classList.add('summary')
+
+    summaryDiv.innerHTML = `<p>Your monthly income after tax is ${monthlyInc}</p><p>You've spent ${sum}</p><p>You have ${incomeRemaining} remaining</p></div>`
 
 
+    summaryContainer.appendChild(summaryDiv)
+}
+
+// OPTION 2
 let summaryArr = [monthlyInc, sum, incomeRemaining]
 
 const summary = () => {
@@ -82,12 +91,27 @@ const summary = () => {
 
     summaryContainer.appendChild(summaryDiv)
 }
-// OPTION 2
-const summary = () => {
-    const summaryDiv = document.createElement('div')
-    summaryDiv.classList.add('summary')
+//idk what i need to replace/ delete/ add here
+function displayMovies(arr) {
+    moviesContainer.innerHTML = ``
+    for (let i = 0; i < arr.length; i++) {
+        createMovieCard(arr[i])
+    }
+}
 
-    summaryDiv.innerHTML = `<p>Your monthly income after tax is ${monthlyInc}</p><p>You've spent ${sum}</p><p>You have ${incomeRemaining} remaining</p></div>`
+form.addEventListener('submit', submitHandler)
+
+getAllMovies()
+
+
+const budgTable = () => {
+    const tableDiv = document.createElement('div')
+    tableDiv.classList.add('table')
+
+    tableDiv.innerHTML = `<tr>
+    <th>Item</th>
+    <th>Cost</th>
+  </tr></div>`
 
 
     summaryContainer.appendChild(summaryDiv)
@@ -103,7 +127,6 @@ function displayMovies(arr) {
 form.addEventListener('submit', submitHandler)
 
 getAllMovies()
-
 
 // let monthlyInc = (budgetDatabase[index].Income) - ((budgetDatabase[1].Income) * (budgetDatabase[1].Tax))
 

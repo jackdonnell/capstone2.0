@@ -6,8 +6,8 @@ app.use(cors())
 
 let budgetDatabase = [{
     Name: 'May',
-    Income: 4800,
-    Tax: null,
+    Income: 5000,
+    Tax: .15,
     items: {
     Rent: 1600,
     Car: 300,
@@ -21,8 +21,8 @@ let budgetDatabase = [{
 },
 {
     Name: 'June',
-    Income: 4800,
-    Tax: null,
+    Income: 5000,
+    Tax: .15,
     items: {
     Rent: 1600,
     Car: 300,
@@ -35,8 +35,8 @@ let budgetDatabase = [{
 },
 {
     Name: 'July',
-    Income: 4800,
-    Tax: null,
+    Income: 5000,
+    Tax: .15,
     items: {
     Rent: 1600,
     Car: 300,
@@ -82,73 +82,34 @@ app.post("/api/newExpense", (req, res) => {
     let {expenseName, cost} = req.body
     budgetDatabase[budgetDatabase.length - 1].items[`${expenseName}`] = +cost
     console.log(budgetDatabase[budgetDatabase.length - 1].items)
+    
 })
 
-const sumBudget = (index) => { 
-    let sum = 0
-    let budgObj = {...budgetDatabase[index].items}
-    // console.log(budgObj)
-        for (const i in budgObj) {
-            sum += budgObj[i]
-        }
-    return sum
-}
-
+let monthlyInc = 0
 const findMonthlyIncAfterTax = (index) => { 
     let inc = budgetDatabase[index].Income
     let tax = budgetDatabase[index].Tax
-    let monthlyInc = inc - (inc * tax)
+    monthlyInc = inc - (inc * tax)
     return monthlyInc
 }
 
+console.log(findMonthlyIncAfterTax(1))
+
+let sum = 0
+const sumBudget = (index) => { 
+    let budgObj = {...budgetDatabase[index].items}
+    // console.log(budgObj)
+    for (const i in budgObj) {
+        sum += budgObj[i]
+    }
+    return sum
+}
+
+console.log(sumBudget(1))
+
 let incomeRemaining = monthlyInc - sum
 
-
-
-console.log(findMonthlyIncAfterTax(3))
-console.log(sumBudget(3))
 console.log(incomeRemaining)
 
 
 app.listen(9876, () => console.log("Docked on port 9876"))
-
-
-// function createBudgetTable(budget) {
-//     const budgetTable = document.createElement('div')
-//     budgetTable.classList.add('budget-table')
-
-//     budgetTable.innerHTML = `
-//   <tr>
-//     <th>Expense</th>
-//     <th>Cost</th>
-//   </tr>
-//   <tr>
-//     <td id="item1">Rent</td>
-//     <td id="cost1">1200</td>
-//   </tr>
-//   <tr>
-//     <td id="item2">Car</td>
-//     <td id="cost2">300</td>
-//   </tr>
-//   <tr>
-//     <td id="item3">Groceries</td>
-//     <td id="cost3">400</td>
-//   </tr>
-//   <tr>
-//     <td id="item4">Going Out</td>
-//     <td id="cost4">300</td>
-//   </tr>
-//   <tr>
-//     <td id="item5">Travel</td>
-//     <td id="cost5">600</td>
-//   </tr>
-//   <tr>
-//     <td id="total">Total</td>
-//     <td id="cost-sum">2800</td>
-//   </tr>
-// </table>
-// </div>`
-
-
-//     moviesContainer.appendChild(budgetTable)
-// }
