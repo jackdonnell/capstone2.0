@@ -85,7 +85,60 @@ app.post("/api/newExpense", (req, res) => {
     console.log(budgetDatabase[budgetDatabase.length - 1].items)
 })
 
-    app.listen(9876, () => console.log("Docked on port 9876"))
+const sumBudget = (index) => {
+    let sum = 0
+    let budgObj = {...budgetDatabase[index].items}
+    // console.log(mayObj)
+    // mayObj.forEach(budget => {
+    for (const i in mayObj) {
+        // console.log(budget.items[i])
+        sum += budgObj[i]
+        return sum
+    // }
+    }
+}
+
+// function createBudgetTable(budget) {
+//     const budgetTable = document.createElement('div')
+//     budgetTable.classList.add('budget-table')
+
+//     budgetTable.innerHTML = `
+//   <tr>
+//     <th>Expense</th>
+//     <th>Cost</th>
+//   </tr>
+//   <tr>
+//     <td id="item1">Rent</td>
+//     <td id="cost1">1200</td>
+//   </tr>
+//   <tr>
+//     <td id="item2">Car</td>
+//     <td id="cost2">300</td>
+//   </tr>
+//   <tr>
+//     <td id="item3">Groceries</td>
+//     <td id="cost3">400</td>
+//   </tr>
+//   <tr>
+//     <td id="item4">Going Out</td>
+//     <td id="cost4">300</td>
+//   </tr>
+//   <tr>
+//     <td id="item5">Travel</td>
+//     <td id="cost5">600</td>
+//   </tr>
+//   <tr>
+//     <td id="total">Total</td>
+//     <td id="cost-sum">2800</td>
+//   </tr>
+// </table>
+// </div>`
+
+
+//     moviesContainer.appendChild(budgetTable)
+// }
+
+app.listen(9876, () => console.log("Docked on port 9876"))
 
 
 
