@@ -42,16 +42,15 @@ let budgetDatabase = [{
     Investment: 800}
 }]
 
-// const sumBudget = (index) => {  
-//     let sum = 0
-//     let budgObj = {...budgetDatabase[index].items}
-//     //  console.log(budgObj)
-//          for (const i in budgObj) {
-//              sum += budgObj[i]
-//          }
-//      return sum
-// } 
-// console.log(sumBudget(3))
+let monthlyInc = 0
+const findMonthlyIncAfterTax = (index) => { 
+    let inc = budgetDatabase[index].Income
+    let tax = budgetDatabase[index].Tax
+    monthlyInc = inc - (inc * tax)
+    return monthlyInc
+}
+
+console.log(findMonthlyIncAfterTax(1))
 
 let sum = 0
 const sumBudget = (index) => { 
@@ -65,17 +64,39 @@ const sumBudget = (index) => {
 
 console.log(sumBudget(1))
 
-let monthlyInc = 0
-const findMonthlyIncAfterTax = (index) => { 
-    let inc = budgetDatabase[index].Income
-    let tax = budgetDatabase[index].Tax
-    monthlyInc = inc - (inc * tax)
-    return monthlyInc
-}
-console.log(findMonthlyIncAfterTax(1))
+let incomeRemaining = monthlyInc - sum
 
-let incomeRemaining = monthlyInc - (monthlyInc - sum)
 console.log(incomeRemaining)
+
+
+
+
+let summaryArr = [monthlyInc, sum, incomeRemaining]
+
+function summary(arr) {
+    const summaryDiv = document.createElement('div')
+    summaryDiv.classList.add('summary')
+
+    summaryDiv.innerHTML = `<p>Your monthly income after tax is ${summaryArr[0]}</p><p>You've spent ${summaryArr[1]}</p><p>You have ${summaryArr[2]} remaining</p></div>`
+
+
+    not sure yet.appendChild(summaryDiv)
+}
+
+function displayMovies(arr) {
+    moviesContainer.innerHTML = ``
+    for (let i = 0; i < arr.length; i++) {
+        createMovieCard(arr[i])
+    }
+}
+
+form.addEventListener('submit', submitHandler)
+
+getAllMovies()
+
+
+// let monthlyInc = (budgetDatabase[index].Income) - ((budgetDatabase[1].Income) * (budgetDatabase[1].Tax))
+
 // const findIncomeSpent = (index) => {
 
 // }

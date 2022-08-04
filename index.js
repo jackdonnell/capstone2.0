@@ -6,6 +6,8 @@ const getMay = document.querySelector("#may-budget")
 const getJune = document.querySelector("#june-budget")
 const getJuly = document.querySelector("#july-budget")
 
+const summaryContainer = document.querySelector("#summary-container")
+
 const expenseAndCostSubmit = document.querySelector("#income-tax-submit")
 const nameAndIncomeAndTaxSubmit = document.querySelector("#name-income-tax-submit")
 const getMayBudget = () => {
@@ -55,6 +57,29 @@ const newExpense = () => {
         console.log(res.data)
     })
 }
+
+let summaryArr = [monthlyInc, sum, incomeRemaining]
+
+function summary(arr) {
+    const summaryDiv = document.createElement('div')
+    summaryDiv.classList.add('summary')
+
+    summaryDiv.innerHTML = `<p>Your monthly income after tax is ${summaryArr[0]}</p><p>You've spent ${summaryArr[1]}</p><p>You have ${summaryArr[2]} remaining</p></div>`
+
+
+    summaryContainer.appendChild(summaryDiv)
+}
+
+// function displayMovies(arr) {
+//     moviesContainer.innerHTML = ``
+//     for (let i = 0; i < arr.length; i++) {
+//         createMovieCard(arr[i])
+//     }
+// }
+
+// form.addEventListener('submit', submitHandler)
+
+// getAllMovies()
 
 getMay.addEventListener("click", getMayBudget)
 getJune.addEventListener("click", getJuneBudget)

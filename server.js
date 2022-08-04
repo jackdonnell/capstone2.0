@@ -76,7 +76,6 @@ app.post("/api/postNameAndIncomeAndTax", (req, res) => {
     res.status(200).send(budgetDatabase[budgetDatabase.length - 1])
 })
 
-
 app.post("/api/newExpense", (req, res) => {
     console.log("Post endpoint hit")
     console.log(budgetDatabase[budgetDatabase.length - 1].items)
@@ -94,7 +93,6 @@ const sumBudget = (index) => {
         }
     return sum
 }
-console.log(sumBudget(3))
 
 const findMonthlyIncAfterTax = (index) => { 
     let inc = budgetDatabase[index].Income
@@ -102,8 +100,19 @@ const findMonthlyIncAfterTax = (index) => {
     let monthlyInc = inc - (inc * tax)
     return monthlyInc
 }
-    
+
+let incomeRemaining = monthlyInc - sum
+
+
+
 console.log(findMonthlyIncAfterTax(3))
+console.log(sumBudget(3))
+console.log(incomeRemaining)
+
+
+app.listen(9876, () => console.log("Docked on port 9876"))
+
+
 // function createBudgetTable(budget) {
 //     const budgetTable = document.createElement('div')
 //     budgetTable.classList.add('budget-table')
@@ -143,5 +152,3 @@ console.log(findMonthlyIncAfterTax(3))
 
 //     moviesContainer.appendChild(budgetTable)
 // }
-
-app.listen(9876, () => console.log("Docked on port 9876"))
