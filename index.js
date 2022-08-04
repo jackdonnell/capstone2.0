@@ -44,6 +44,19 @@ const getMayBudget = () => {
             summary(res.data)
         })
     }
+    const getNextMonth = () => {
+        axios.get(`${baseURL}/api/getNextMonth`)
+            .then((res) => {
+                console.log(res.data)
+                while (summaryContainer.firstChild) {
+                    summaryContainer.removeChild(summaryContainer.firstChild);
+                }
+                summary(res.data)
+            })
+        }
+    // const summaryNextMonth = () => {
+    //     axios.get(`${baseURL}/api/postAndNameAndTax`)
+    // }
 
     const sumTotal = (id) => {
         axios.get(`${baseURL}/api/getMonthlyInc/${id}`)
@@ -66,6 +79,20 @@ const taxInput = document.querySelector("#tax")
             console.log(res.data)
         })
 }
+// const postnextMonth = (e) => {
+//     const nameInput = document.querySelector("#name")
+// const incomeInput = document.querySelector("#income")
+// const taxInput = document.querySelector("#tax")
+// const budgetDatabaseObj2 = {
+//     Name: nameInput.value,
+//     Income: incomeInput.value,
+//     Tax: taxInput.value
+// }
+// axios.post(`${baseURL}/api/postNameAndIncomeAndTax`, budgetDatabaseObj2) 
+//     .then((res) => {
+//         console.log(res.data)
+//     })
+// }
 
 const newExpense = () => {
     const expense = document.querySelector("#expense")
@@ -77,6 +104,7 @@ const newExpense = () => {
     console.log(expenseObj)
     axios.post(`${baseURL}/api/newExpense`, expenseObj)
     .then((res) => {
+        summary(res.data)
         console.log(res.data)
     })
 }
@@ -120,13 +148,11 @@ const summary = (obj) => {
 
 // }
 
-// nameAndIncomeAndTaxSubmit.addEventListener("click", runEverything)
+
+nameAndIncomeAndTaxSubmit.addEventListener("click", postNameAndIncomeAndTax)
 expenseAndCostSubmit.addEventListener("click", newExpense)
 
-const incomeTotal = () => {
-    sumTotal(1)
-}
-testButton.addEventListener("click", incomeTotal)
 getMay.addEventListener("click", getMayBudget)
 getJune.addEventListener("click", getJuneBudget)
 getJuly.addEventListener("click", getJulyBudget)
+getNextBudget.addEventListener("click", getNextMonth)

@@ -60,6 +60,10 @@ app.get("/api/getJuly", (req, res) => {
     console.log("Endpoint hit")
     res.status(200).send(budgetDatabase[2])
 })
+app.get("/api/getNextMonth", (req, res) => {
+    console.log("Endpoint hit")
+    res.status(200).send(budgetDatabase[3])
+})
 
 app.post("/api/postNameAndIncomeAndTax", (req, res) => {
     console.log("Post endpoint hit")
@@ -68,8 +72,6 @@ app.post("/api/postNameAndIncomeAndTax", (req, res) => {
         Income: +req.body.Income,
         Tax: +req.body.Tax,
         items: {}
-
-
     }
     budgetDatabase.push(newBudget)
     console.log(budgetDatabase[budgetDatabase.length - 1])
