@@ -42,43 +42,29 @@ let budgetDatabase = [{
     Investment: 800}
 }]
 
-    // const sumBudget = (index) => {  
-    //     let sum = 0
-    //  let budgObj = {...budgetDatabase[index].items}
-    // //  console.log(budgObj)
-    //      for (const i in budgObj) {
-    //          sum += budgObj[i]
-    //      }
-    //  return sum
-    // }
-     
-    // console.log(sumBudget(3))
- const sumBudget = (index) => {  
-       let sum = 0
+// const sumBudget = (index) => {  
+//     let sum = 0
+//     let budgObj = {...budgetDatabase[index].items}
+//     //  console.log(budgObj)
+//          for (const i in budgObj) {
+//              sum += budgObj[i]
+//          }
+//      return sum
+// } 
+// console.log(sumBudget(3))
+const sumBudget = (index) => { 
+    let sum = 0
     let budgObj = {...budgetDatabase[index].items}
     // console.log(budgObj)
         for (const i in budgObj) {
-            // console.log(budget.items[i])
             sum += budgObj[i]
-            // }
         }
-        return sum
-    }
+    return sum
+}
     
-        console.log(sumBudget(0))
-// const sumBudget = (index) => {
-//     let sum = 0
-//     let budgObj = {...budgetDatabase[index].items}
-//     // console.log(mayObj)
-//     // mayObj.forEach(budget => {
-//     for (const i in mayObj) {
-//         // console.log(budget.items[i])
-//         sum += budgObj[i]
-//         return sum
-//     // }
-//     }
-// }
-// console.log(sumBudget(3))
+console.log(sumBudget(1))
+
+
 
 // let taxAmount = budgetDatabase[3].Income * budgetDatabase[3].Tax
 // console.log(taxAmount)
