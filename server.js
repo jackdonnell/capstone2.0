@@ -85,17 +85,19 @@ app.post("/api/newExpense", (req, res) => {
     console.log(budgetDatabase[budgetDatabase.length - 1].items)
 })
 
-const sums = (index) => {  
+const sumBudget = (index) => {  
     let sum = 0
  let budgObj = {...budgetDatabase[index].items}
-//  console.log(budgObj)
+ // console.log(budgObj)
      for (const i in budgObj) {
+         // console.log(budget.items[i])
          sum += budgObj[i]
+         // }
      }
- return sum
-}
+     return sum
+ }
  
-console.log(sumBudget)(3)
+     console.log(sumBudget(0))
 // function createBudgetTable(budget) {
 //     const budgetTable = document.createElement('div')
 //     budgetTable.classList.add('budget-table')

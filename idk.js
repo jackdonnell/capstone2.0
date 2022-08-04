@@ -42,21 +42,21 @@ let budgetDatabase = [{
     Investment: 800}
 }]
 
-
-let sum = 0
-let mayObj = {...budgetDatabase[0].items}
-// console.log(mayObj)
-    for (const i in mayObj) {
-        // console.log(budget.items[i])
-        sum += mayObj[i]
-        // }
-    }
-    console.log(sum)
-
- const sums = (index) => {  
+    // const sumBudget = (index) => {  
+    //     let sum = 0
+    //  let budgObj = {...budgetDatabase[index].items}
+    // //  console.log(budgObj)
+    //      for (const i in budgObj) {
+    //          sum += budgObj[i]
+    //      }
+    //  return sum
+    // }
+     
+    // console.log(sumBudget(3))
+ const sumBudget = (index) => {  
        let sum = 0
     let budgObj = {...budgetDatabase[index].items}
-    console.log(budgObj)
+    // console.log(budgObj)
         for (const i in budgObj) {
             // console.log(budget.items[i])
             sum += budgObj[i]
@@ -65,7 +65,7 @@ let mayObj = {...budgetDatabase[0].items}
         return sum
     }
     
-        console.log(sums(0))
+        console.log(sumBudget(0))
 // const sumBudget = (index) => {
 //     let sum = 0
 //     let budgObj = {...budgetDatabase[index].items}
