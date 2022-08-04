@@ -94,8 +94,16 @@ const sumBudget = (index) => {
         }
     return sum
 }
+console.log(sumBudget(3))
+
+const findMonthlyIncAfterTax = (index) => { 
+    let inc = budgetDatabase[index].Income
+    let tax = budgetDatabase[index].Tax
+    let monthlyInc = inc - (inc * tax)
+    return monthlyInc
+}
     
-console.log(sumBudget(1))
+console.log(findMonthlyIncAfterTax(3))
 // function createBudgetTable(budget) {
 //     const budgetTable = document.createElement('div')
 //     budgetTable.classList.add('budget-table')

@@ -52,20 +52,33 @@ let budgetDatabase = [{
 //      return sum
 // } 
 // console.log(sumBudget(3))
+
+let sum = 0
 const sumBudget = (index) => { 
-    let sum = 0
     let budgObj = {...budgetDatabase[index].items}
     // console.log(budgObj)
-        for (const i in budgObj) {
-            sum += budgObj[i]
-        }
+    for (const i in budgObj) {
+        sum += budgObj[i]
+    }
     return sum
 }
-    
+
 console.log(sumBudget(1))
 
+let monthlyInc = 0
+const findMonthlyIncAfterTax = (index) => { 
+    let inc = budgetDatabase[index].Income
+    let tax = budgetDatabase[index].Tax
+    monthlyInc = inc - (inc * tax)
+    return monthlyInc
+}
+console.log(findMonthlyIncAfterTax(1))
 
+let incomeRemaining = monthlyInc - (monthlyInc - sum)
+console.log(incomeRemaining)
+// const findIncomeSpent = (index) => {
 
+// }
 // let taxAmount = budgetDatabase[3].Income * budgetDatabase[3].Tax
 // console.log(taxAmount)
 

@@ -69,3 +69,7 @@ input {
     color: #232323;
     background-color: rgb(251, 250, 250);
 }
+#sums {
+    text-align: center;
+    line-height: 1;
+}
