@@ -73,14 +73,24 @@ console.log(incomeRemaining)
 
 let summaryArr = [monthlyInc, sum, incomeRemaining]
 
-function summary(arr) {
+const summary = () => {
     const summaryDiv = document.createElement('div')
     summaryDiv.classList.add('summary')
 
     summaryDiv.innerHTML = `<p>Your monthly income after tax is ${summaryArr[0]}</p><p>You've spent ${summaryArr[1]}</p><p>You have ${summaryArr[2]} remaining</p></div>`
 
 
-    not sure yet.appendChild(summaryDiv)
+    summaryContainer.appendChild(summaryDiv)
+}
+// OPTION 2
+const summary = () => {
+    const summaryDiv = document.createElement('div')
+    summaryDiv.classList.add('summary')
+
+    summaryDiv.innerHTML = `<p>Your monthly income after tax is ${monthlyInc}</p><p>You've spent ${sum}</p><p>You have ${incomeRemaining} remaining</p></div>`
+
+
+    summaryContainer.appendChild(summaryDiv)
 }
 
 function displayMovies(arr) {
