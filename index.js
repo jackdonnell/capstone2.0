@@ -106,7 +106,7 @@ const summary = (obj) => {
     const summaryDiv = document.createElement('div')
     summaryDiv.classList.add('summary')
 
-    summaryDiv.innerHTML = `<p>Your monthly income after tax is ${monthlyInc}</p><p>You've spent ${sum}</p><p>You have ${incomeRemaining} remaining</p></div>`
+    summaryDiv.innerHTML = `<p>Your monthly income after tax is $${monthlyInc}</p><p>You've spent $${sum}</p><p>You have $${incomeRemaining} remaining</p></div>`
     summaryContainer.appendChild(summaryDiv)
 }
 
