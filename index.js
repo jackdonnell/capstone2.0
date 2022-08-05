@@ -94,7 +94,7 @@ const newExpense = () => {
 const summary = (obj) => {
     let inc = obj.Income
     let tax = obj.Tax
-    let monthlyInc = inc - (inc * tax)
+    let monthlyInc = ((inc - (inc * tax)) / 12)
 
     let sum = 0
     let budgObj = {...obj.items}

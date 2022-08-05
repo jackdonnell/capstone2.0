@@ -94,7 +94,7 @@ let monthlyInc = 0
 const findMonthlyIncAfterTax = (index) => { 
     let inc = budgetDatabase[index].Income
     let tax = budgetDatabase[index].Tax
-    monthlyInc = (inc - (inc * tax)) / 12
+    monthlyInc = inc - (inc * tax)
     return monthlyInc
 }
 
