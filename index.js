@@ -54,9 +54,6 @@ const getMayBudget = () => {
                 summary(res.data)
             })
         }
-    // const summaryNextMonth = () => {
-    //     axios.get(`${baseURL}/api/postAndNameAndTax`)
-    // }
 
     const sumTotal = (id) => {
         axios.get(`${baseURL}/api/getMonthlyInc/${id}`)
@@ -79,21 +76,6 @@ const taxInput = document.querySelector("#tax")
             console.log(res.data)
         })
 }
-// const postnextMonth = (e) => {
-//     const nameInput = document.querySelector("#name")
-// const incomeInput = document.querySelector("#income")
-// const taxInput = document.querySelector("#tax")
-// const budgetDatabaseObj2 = {
-//     Name: nameInput.value,
-//     Income: incomeInput.value,
-//     Tax: taxInput.value
-// }
-// axios.post(`${baseURL}/api/postNameAndIncomeAndTax`, budgetDatabaseObj2) 
-//     .then((res) => {
-//         console.log(res.data)
-//     })
-// }
-
 const newExpense = () => {
     const expense = document.querySelector("#expense")
     const cost = document.querySelector("#cost")
@@ -109,8 +91,6 @@ const newExpense = () => {
     })
 }
 
-// let summaryArr = [monthlyInc, sum, incomeRemaining]
-
 const summary = (obj) => {
     let inc = obj.Income
     let tax = obj.Tax
@@ -118,7 +98,6 @@ const summary = (obj) => {
 
     let sum = 0
     let budgObj = {...obj.items}
-    // console.log(budgObj)
     for (const i in budgObj) {
         sum += budgObj[i]
     }
@@ -130,24 +109,6 @@ const summary = (obj) => {
     summaryDiv.innerHTML = `<p>Your monthly income after tax is ${monthlyInc}</p><p>You've spent ${sum}</p><p>You have ${incomeRemaining} remaining</p></div>`
     summaryContainer.appendChild(summaryDiv)
 }
-
-// function displaySumary() {
-//     budgetContainer.innerHTML = ``
-//     for (let i = 0; i < arr.length; i++) {
-//         create(arr[i])
-//     }
-// }
-
-// form.addEventListener('submit', submitHandler)
-
-// getAllMovies()
-
-// const runEverything = () => {
-// summary(summaryArr)
-// postNameAndIncomeAndTax(2)
-
-// }
-
 
 nameAndIncomeAndTaxSubmit.addEventListener("click", postNameAndIncomeAndTax)
 expenseAndCostSubmit.addEventListener("click", newExpense)
